@@ -1,0 +1,68 @@
+// Utilities
+textarea.textarea-no-resize {
+    resize: none;
+}
+
+// .border {
+//     &-green {
+//         border-color: var(--bs-teal);
+//     }
+//     &-blue {
+//         border-color: var(--bs-teal);
+//     }
+//     &-purple {
+//         border-color: var(--bs-teal);
+//     }
+//     &-yellow {
+//         border-color: var(--bs-teal);
+//     }
+//     &-blue {
+//         border-color: var(--bs-teal);
+//     }
+// }
+
+// SIDEBAR PROFILE
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    margin-top: 2rem;
+    .profile-avt {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 10rem;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+    }
+    .profile-info {
+        .name {
+            font-size: 1.2rem;
+            margin-bottom: 0; 
+        }
+        .email {
+            font-size: 0.8rem;
+            margin-bottom: 0;
+        }
+    }
+}
+.sidebar-footer {
+    padding: 0 2rem;
+}
+
+// ERROR
+.img-error {
+    max-width: 600px;
+}
+
+// MODAL
+.modal {
+    .modal-header {
+        .close {
+            display: flex;
+            padding: 10px;
+        }
+    }
+}

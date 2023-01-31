@@ -1,32 +1,28 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as basicAuth from 'express-basic-auth';
-import { ValidationPipe } from './pipe/validation.pipe';
+import App from './App.vue'
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { cors: true });
-  app.useGlobalPipes(
-    ValidationPipe({
-      whitelist: false,
-      forbidNonWhitelisted: true,
-      skipMissingProperties: false,
-      // forbidUnknownValues: true,
-      disableErrorMessages: true,
-    }),
-  );
-  //Swagger
-  const config = new DocumentBuilder()
-    .setTitle('Exchange Rate 68')
-    .setDescription('Exchange Rate 68 API description')
-    .setVersion('1.0')
-    .addTag('Exchange Rate 68')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+const app = createApp(App)
 
-  await app.listen(4000);
-  app.enableCors();
-}
-bootstrap();
+
+// Script js
+import "./lib/bootstrap/bootstrap";
+
+// Import styles
+import "./lib/mazer/scss/pages/auth.scss";
+import "./assets/styles/vendors.scss";
+import "./assets/styles/app.scss";
+
+// Import lib
+import "./plugins/vee-validate"
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import router from './router'
+import Toast, { options } from './plugins/vue-toastification'
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
+app.use(router)
+app.use(Toast, options)
+
+app.mount('#app')
